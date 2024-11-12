@@ -18,7 +18,7 @@
                                     <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Precio</th>
                                     <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Stock</th>
                                     <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Categoría</th>
-                                    <th class="px-4 py-2 text-left text-sm font-medium text-gray-700">Acciones</th>
+                                    <th class="px-4 py-2 text-left text-sm font-medium text-gray-700" colspan="3">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -27,7 +27,7 @@
                                         <td class="px-4 py-2 text-sm text-gray-800">{{ $product->name }}</td>
                                         <td class="px-4 py-2 text-sm text-gray-800">{{ number_format($product->price,) }}</td>
                                         <td class="px-4 py-2 text-sm text-gray-800">{{ $product->stok }}</td>
-                                        <td class="px-4 py-2 text-sm text-gray-800">{{ $product->category ? $product->category->name : 'Sin categoría' }}</td>
+                                        <td class="px-4 py-2 text-sm text-gray-800" >{{ $product->category ? $product->category->name : 'Sin categoría' }}</td>
                                         <td>
                                             <form action="{{ route('products.destroy', ['id' => $product->id]) }}" method="POST" class="inline-block">
                                                 @method('DELETE')
@@ -37,6 +37,12 @@
                                                 </button>
                                             </form>
                                             
+                                        </td>
+                                        <td>
+                                            <button class="px-4 py-2 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50" title="actualizar Producto">
+                                                <a href="{{ route('products.edit', ['id' => $product->id]) }}" >
+                                                    actualizar
+                                            </button>
                                         </td>
                                     </tr>
                                 @endforeach

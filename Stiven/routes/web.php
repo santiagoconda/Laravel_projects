@@ -24,8 +24,8 @@ Route::middleware('auth')->group(function () {
     Route::post('products', [sisvenController::class, 'store'])->name('products.store');
     Route::get('products', [sisvenController::class, 'index'])->name('sisven.index');
     Route::delete('/products/{id}', [sisvenController::class, 'destroy'])->name('products.destroy');
-    // Route::delete('/comuna/{comuna}',[ComunaController::class,'destroy'])->name('comuna.destroy');
-
+    Route::put('/products/{id}',[sisvenController::class,'update'])->name('products.update');
+    Route::get('/products/{id}/edit',[sisvenController::class,'edit'])->name('products.edit');
 
     Route::get('custom', [customController::class, 'index'])->name('sisven.getClientes');
     Route::get('custom/create', [customController::class, 'create'])->name('custom.create');

@@ -29,6 +29,7 @@ class sisvenController extends Controller
         return view('sisven.create', compact('categories'));
     }
 
+
     /**
      * Store a newly created resource in storage.
      */
@@ -59,6 +60,9 @@ class sisvenController extends Controller
     public function edit(string $id)
     {
         //
+        $product = Product::findOrFail($id);
+        $categories = Category::all();
+        return view('sisven.edit', compact('product','categories'));
     }
 
     /**
@@ -67,6 +71,20 @@ class sisvenController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $request->validate([
+            'name' => 'required',
+            'price' => 'required|numeric',
+            'stok' => 'required|numeric',
+            'category_id' => 'required|exists:categories,id',
+        ]);
+        $product = Product::findOrFail($id);
+        $product->update([
+            'name' => $request->input('name'),
+            'price' => $request->input('price'),
+            'stok' => $request->input('stok'),
+            'category_id' => $request->input('category_id'),
+        ]);
+        return redirect()->route('sisven.index')->with('success', 'Producto actualizado');
     }
 
     /**
