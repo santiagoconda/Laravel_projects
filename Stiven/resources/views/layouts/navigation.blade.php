@@ -19,12 +19,28 @@
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('sisven.index')" :active="request()->routeIs('sisven.index')">
-                        {{ __('Index') }}
+                        {{ __('Productos') }}
+                    </x-nav-link>
+                </div>
+
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('sisven.getClientes')" :active="request()->routeIs('sisven.getClientes')">
+                        {{ __('Clientes') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('products.create')" :active="request()->routeIs('products.create')">
                         {{ __('Crear Producto') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('custom.create')" :active="request()->routeIs('custom.create')">
+                        {{ __('Crear Cliente') }}
+                    </x-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('invoice.create')" :active="request()->routeIs('invoice.create')">
+                        {{ __('Crear Facturas') }}
                     </x-nav-link>
                 </div>
             

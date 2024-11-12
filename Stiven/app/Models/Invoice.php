@@ -11,10 +11,10 @@ class Invoice extends Model
     protected $fillable = ['number','customer_id','date','_pay_mode_id'];
 
     public function customer(){
-        return $this->belongsTo(costumer::class);
+        return $this->belongsTo(customer::class);
     }
     public function pay_mode(){
 
-        return $this->belongsTo(PayMode::class);
+        return $this->belongsTo(PayMode::class,'_pay_mode_id');
     }
 }
