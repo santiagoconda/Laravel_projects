@@ -75,5 +75,11 @@ class sisvenController extends Controller
     public function destroy(string $id)
     {
         //
+        $product= Product::find($id);
+        if(!$product){
+            return redirect()->route('sisven.index')->with('success', 'Producto no encontrado');
+        }
+        $product->delete();
+        return redirect()->route('sisven.index')->with('success', 'Producto no encontrado');
     }
 }

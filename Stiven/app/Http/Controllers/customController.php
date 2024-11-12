@@ -50,7 +50,7 @@ class customController extends Controller
         
         customer::create($validated);
         // dd($validated);
-        return redirect()->route('sisven.createCustom')->with('success', 'User creado');
+        return redirect()->route('sisven.getClientes')->with('success', 'User creado');
     }
   
 

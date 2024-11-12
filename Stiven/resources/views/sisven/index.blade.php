@@ -27,7 +27,16 @@
                                         <td class="px-4 py-2 text-sm text-gray-800">{{ $product->name }}</td>
                                         <td class="px-4 py-2 text-sm text-gray-800">{{ number_format($product->price,) }}</td>
                                         <td class="px-4 py-2 text-sm text-gray-800">{{ $product->stok }}</td>
-                                        <td class="px-4 py-2 text-sm text-gray-800">{{ $product->category ? $product->category->name : 'Sin categoría' }}
+                                        <td class="px-4 py-2 text-sm text-gray-800">{{ $product->category ? $product->category->name : 'Sin categoría' }}</td>
+                                        <td>
+                                            <form action="{{ route('products.destroy', ['id' => $product->id]) }}" method="POST" class="inline-block">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button type="submit" class="px-4 py-2 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50" title="Eliminar Producto">
+                                                    <i class="fas fa-trash-alt mr-2"></i> Eliminar
+                                                </button>
+                                            </form>
+                                            
                                         </td>
                                     </tr>
                                 @endforeach
