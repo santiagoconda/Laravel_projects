@@ -30,9 +30,15 @@ Route::middleware('auth')->group(function () {
     Route::get('custom', [customController::class, 'index'])->name('sisven.getClientes');
     Route::get('custom/create', [customController::class, 'create'])->name('custom.create');
     Route::post('custom', [customController::class, 'store'])->name('custom.store');
-    
+    Route::put('/custom/{id}',[customController::class,'update'])->name('custom.update');
+    Route::get('/custom/{id}/edit',[customController::class,'edit'])->name('custom.edit');
+    Route::delete('/custom/{id}', [customController::class, 'destroy'])->name('custom.destroy');
+
+    Route::get('/invoices', [invoiceController::class, 'index'])->name('sisven.facturas');
     Route::get('invoice/create', [invoiceController::class, 'create'])->name('invoice.create');
     Route::post('invoice',[invoiceController::class, 'store'])->name('invoice.store');
+    Route::get('/facturas/{id}', [invoiceController::class, 'show'])->name('invoice.show');
+
 });
 // Route::get('/index', function(){
 

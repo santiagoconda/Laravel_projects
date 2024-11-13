@@ -10,4 +10,11 @@ class PayMode extends Model
     use HasFactory;
     protected $table = '_pay_mode';
     protected $fillable = ['name','description'];
+
+    public function invoices()
+{
+    return $this->hasMany(Invoice::class, '_pay_mode_id');
 }
+}
+
+

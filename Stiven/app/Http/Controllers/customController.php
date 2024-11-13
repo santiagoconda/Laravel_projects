@@ -73,6 +73,8 @@ class customController extends Controller
     public function edit(string $id)
     {
         //
+        $customers = customer::findOrFail($id);
+        return view('sisven.editCustom', compact('customers'));
     }
 
     /**
@@ -81,6 +83,26 @@ class customController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $request->validate([
+            'document_number' => 'required|numeric',
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'andress' => 'required',
+            'birthday' => 'required',
+            'phone_number' => 'required',
+            'email' => 'required',
+        ]);
+        $customers = customer::findOrFail($id);
+        $customers->update([
+            'document_number' => $request->input('document_number'),
+            'first_name' => $request->input('first_name'),
+            'last_name' => $request->input('last_name'),
+            'andress' => $request->input('andress'),
+            'birthday' => $request->input('birthday'),
+            'phone_number' => $request->input('phone_number'),
+            'email' => $request->input('email'),
+        ]);
+        return redirect()->route('sisven.getClientes')->with('success', 'Cliente actualizado');
     }
 
     /**
@@ -89,5 +111,12 @@ class customController extends Controller
     public function destroy(string $id)
     {
         //
+        $customers = customer::find($id);
+        if(!$customers){
+            return redirect()->route('sisven.getClientes')->with('error', 'Cliente no encontrado');
+        }
+        $customers->delete();
+        return redirect()->route('sisven.getClientes')->with('error', 'Cliente no encontrado');
+
     }
 }

@@ -17,7 +17,8 @@ class invoiceController extends Controller
     public function index()
     {
         //
-        return view('sisven.createInvoice');
+        $invoice = Invoice::all();
+        return view('sisven.facturas',compact('invoice'));
 
       
     }
@@ -31,7 +32,6 @@ class invoiceController extends Controller
 
         $customers = Customer::all();
         $payModes = PayMode::all();
-        $Invoice = Invoice::all();
         return view('sisven.createInvoice', compact('customers', 'payModes'));
     }
 
@@ -51,7 +51,7 @@ class invoiceController extends Controller
 
     Invoice::create($validated); 
 
-    return redirect()->route('sisven.index')->with('success', 'Factura creada');
+    return redirect()->route('sisven.facturas')->with('success', 'Factura creada');
  
      
 
@@ -65,6 +65,9 @@ class invoiceController extends Controller
     public function show(string $id)
     {
         //
+        $invoice= Invoice::with(['customer','pay_mode'])->findOrFail($id);
+        return view('sisven.detalleInvoice',compact('invoice'));
+
     }
 
     /**
