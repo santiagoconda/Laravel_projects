@@ -78,7 +78,7 @@ class customController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified resource in storage.a
      */
     public function update(Request $request, string $id)
     {
