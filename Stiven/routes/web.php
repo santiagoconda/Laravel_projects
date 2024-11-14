@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\sisvenController;
 use App\Http\Controllers\customController;
 use App\Http\Controllers\invoiceController;
+use App\Http\Controllers\detailsController;
+use App\Http\Controllers\cotrolador1;
 
 
 use Illuminate\Support\Facades\Route;
@@ -19,6 +21,7 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'delete'])->name('profile.destroy');
     
     Route::get('products/create', [sisvenController::class, 'create'])->name('products.create');
     Route::post('products', [sisvenController::class, 'store'])->name('products.store');
@@ -38,11 +41,16 @@ Route::middleware('auth')->group(function () {
     Route::get('invoice/create', [invoiceController::class, 'create'])->name('invoice.create');
     Route::post('invoice',[invoiceController::class, 'store'])->name('invoice.store');
     Route::get('/facturas/{id}', [invoiceController::class, 'show'])->name('invoice.show');
+    Route::delete('/invoice/{id}',[invoiceController::class, 'destroy'])->name('invoice.destroy');
+
+    Route::get('/details', [detailsController::class, 'index'])->name('detail.index');
+    Route::get('/details/create', [detailsController::class, 'create'])->name('detail.create');
+    Route::post('detail', [detailsController::class, 'store'])->name('detail.store');
+
+    Route::get('/combined', [cotrolador1::class, 'index'])->name('forms');
+
+
 
 });
-// Route::get('/index', function(){
-
-//     return view('sisven.index');
-// })->middleware(['auth', 'verified'])->name('sisven.index');
 
 require __DIR__.'/auth.php';

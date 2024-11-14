@@ -76,6 +76,9 @@ class invoiceController extends Controller
     public function edit(string $id)
     {
         //
+        $invoice = Invoice::findOrFail($id);
+        $paymode = PayMode::all();
+        return view('sisven.editInvoice', compact('invoice','paymode'));
     }
 
     /**
@@ -84,6 +87,15 @@ class invoiceController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $request->validate([
+            'number'=>'required',
+            'customer_id'=>'required|exists:costumers,id',
+            'date'=>'required|date',
+            '_pay_mode_id'=>'required|exists:_pay_mode,id',
+        ]);
+        $invoice = Invoice::findOrFail($id);
+        $invoice->update($request->all());
+        return redirect()->route('sisven.facturas')->with('success', 'Factura actual');
     }
 
     /**
@@ -92,5 +104,12 @@ class invoiceController extends Controller
     public function destroy(string $id)
     {
         //
+        $invoice = Invoice::find($id);
+        if(!$invoice){
+            return redirect()->route('sisven.facturas')->with('error', 'Factura no encontrada');
+        }
+        $invoice->delete();
+        return redirect()->route('sisven.facturas')->with('error', 'Factura no eliminada');
+
     }
 }

@@ -24,11 +24,15 @@
                     <p><strong>Total:</strong> ${{ number_format($invoice->total_amount, 2) }}</p>
                 </div>
             </div>
-
             <div class="p-6 bg-gray-50 text-center">
                 <button onclick="window.print()" class="px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition duration-200">
                     Imprimir Factura
                 </button>
+                <form action="{{ route('detail.create') }}" class="inline-block">
+                    </button>
+                </form>
+             
+
             </div>
         </div>
     </div>
