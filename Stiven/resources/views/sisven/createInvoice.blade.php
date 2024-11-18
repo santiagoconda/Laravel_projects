@@ -48,8 +48,8 @@
                        
                     </form>
                     <form action="{{ route('detail.create') }}" class="inline-block">
-                        <button type="submit" class="px-4 py-2 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50" title="añadir Producto">
-                            <i class="fas fa-trash-alt mr-2"></i> Añadir producto
+                        <button type="submit" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" title="añadir Producto">
+                         Añadir producto
                         </button>
                     </form>
     

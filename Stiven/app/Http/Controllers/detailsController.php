@@ -44,7 +44,7 @@ class detailsController extends Controller
 
         ]);
         detail::create($validated);
-        return redirect()->route('detail.index')->with('success', 'Details created successfully');
+        return redirect()->route('sisven.facturas')->with('success', 'Details created successfully');
         
     }
 
@@ -54,6 +54,10 @@ class detailsController extends Controller
     public function show(string $id)
     {
         //
+        $detail = detail::with ('product','invoice')->find($id);
+        return view('sisven.detalleInvoice', compact('detail'));
+
+
     }
 
     /**

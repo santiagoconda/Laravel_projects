@@ -7,7 +7,6 @@ use App\Http\Controllers\invoiceController;
 use App\Http\Controllers\detailsController;
 use App\Http\Controllers\cotrolador1;
 
-
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -48,9 +47,6 @@ Route::middleware('auth')->group(function () {
     Route::post('detail', [detailsController::class, 'store'])->name('detail.store');
 
     Route::get('/combined', [cotrolador1::class, 'index'])->name('forms');
-
-
-
 });
 
 require __DIR__.'/auth.php';

@@ -32,14 +32,14 @@
                                             <form action="{{ route('products.destroy', ['id' => $product->id]) }}" method="POST" class="inline-block">
                                                 @method('DELETE')
                                                 @csrf
-                                                <button type="submit" class="px-4 py-2 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50" title="Eliminar Producto">
+                                                <button type="submit" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800  font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"  title="Eliminar Producto">
                                                     <i class="fas fa-trash-alt mr-2"></i> Eliminar
                                                 </button>
                                             </form>
                                             
                                         </td>
                                         <td>
-                                            <button class="px-4 py-2 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50" title="actualizar Producto">
+                                            <button class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800" title="actualizar Producto">
                                                 <a href="{{ route('products.edit', ['id' => $product->id]) }}" >
                                                     actualizar
                                             </button>

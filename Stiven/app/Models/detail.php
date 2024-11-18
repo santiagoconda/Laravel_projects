@@ -17,10 +17,10 @@ class detail extends Model
 
     ];
     public function invoice(){
-        return $this->belongsTo(customer::class,'invoice_id');
+        return $this->belongsTo(invoice::class,'invoice_id');
     }
     public function product(){
 
-        return $this->belongsTo(PayMode::class,'product_id');
+        return $this->belongsTo(product::class,'product_id');
     }
 }

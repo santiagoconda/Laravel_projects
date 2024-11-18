@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Invoice;
 use App\Models\PayMode;
-use App\Models\Customer; // Correcto
+use App\Models\Customer;
+use App\Models\detail;
+use App\Models\Product;
 
 
 
@@ -17,6 +19,9 @@ class invoiceController extends Controller
     public function index()
     {
         //
+        
+
+
         $invoice = Invoice::all();
         return view('sisven.facturas',compact('invoice'));
 
@@ -29,7 +34,7 @@ class invoiceController extends Controller
     public function create()
     {
         //
-
+ 
         $customers = Customer::all();
         $payModes = PayMode::all();
         return view('sisven.createInvoice', compact('customers', 'payModes'));
@@ -63,11 +68,22 @@ class invoiceController extends Controller
      * Display the specified resource.
      */
     public function show(string $id)
+    
     {
-        //
-        $invoice= Invoice::with(['customer','pay_mode'])->findOrFail($id);
-        return view('sisven.detalleInvoice',compact('invoice'));
+        $details = detail::with('product')  
+        ->where('invoice_id', $id) 
+        ->get();
+        
 
+        $total = $details->sum(function($details){
+            return $details->product->price * $details->quantity;
+            
+        });
+        $invoice = $details->first()->invoice;
+        return view('sisven.detalleInvoice', compact('invoice', 'details','total'));
+
+      
+        
     }
 
     /**

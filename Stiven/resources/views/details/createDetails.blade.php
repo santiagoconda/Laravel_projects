@@ -4,7 +4,7 @@
             {{ __('Facturas') }}
         </h2>
     </x-slot>
-    <div @yield('formulario') class="py-12">
+    <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white shadow-lg sm:rounded-lg overflow-hidden">
                 <div class="p-8 space-y-6">
